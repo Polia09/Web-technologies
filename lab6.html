@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>  
+        
+        <script>
+            
+            function checkAge(){
+                let age;
+                while(true){
+                    age=parseInt(prompt("Введите возвраст:"));
+                    if(!isNaN(age)){
+                        let allowed = (age > 18) ? true : confirm('Родители разрешили?');
+                        return allowed;
+                    }
+                    else{
+                    alert("Пожалуйста, введите числовые значения.");
+                    }
+
+                }
+                
+            }
+            function checkAge2(){
+                let age;
+                while(true){
+                    age=parseInt(prompt("Введите возвраст:"));
+                    if(!isNaN(age)){
+                        allowed = (age > 18) || confirm('Родители разрешили?');
+                        return allowed;
+                    }
+                    else{
+                    alert("Пожалуйста, введите числовые значения.");
+                    }
+
+                }
+                
+            }
+           
+            function checkAge2(age1){
+                var age=parseInt(prompt("Введите возвраст:"));
+                if(!isNaN(age)){
+                let b =(age>18) || confirm ('Родители разрешили?');
+                }
+                else{
+                    alert("Пожалуйста, введите числовые значения.");
+                }
+            }
+            function min(){
+                while(true){
+                let a = parseInt(prompt("Введите число a:"))
+                let b = parseInt(prompt("Введите число b:"))
+                if(!isNaN(a) && !isNaN(b)){
+                if(a>b){
+                    alert(b);
+                }
+                else{
+                    alert(a);
+                }
+                }
+                else{
+                    alert("Пожалуйста, введите числовые значения.");
+                    continue;
+                }
+                break;
+            }
+            }
+            function pow(){
+                let x = parseInt(prompt("Введите число x:"))
+                let n = parseInt(prompt("В какую степень хотите возвести:"))
+                if (!isNaN(x) && !isNaN(n)) {
+                    alert(x ** n);
+                } else {
+                    alert("Пожалуйста, введите числовые значения.");
+                }
+            }
+            function task4(){
+                let a = parseInt(prompt("Введите число a:"))
+                while (isNaN(a) || a % 2 === 0) {
+                a = parseInt(prompt('Введите нечетное число:'));
+                }
+                alert("Вы ввели нечетное число " + a);
+            }
+            function task5(){
+                let stroka = prompt("Введите строку:");
+                while(!/^\d+$/.test(stroka)){
+                    stroka = prompt("Введите строку, в которой только цифры:");
+                }
+                let a = parseInt(stroka);
+                alert("Умножив на 2, получаем: " + (a*2) );
+            }
+            function task6(){
+                var arr = new Array();
+                var arr = [];
+                for (var i =0; i< 10; i++) {
+                    var input = prompt("Введите элемент массива: ");
+                    while (isNaN(input)) {
+                    input = prompt("Введите число: ");
+                    }
+                    arr[i] = parseInt(input);
+                }
+                for (var i=0; i<10; i++) {
+                    if (arr[i]%2===0) {
+                    confirm (arr[i]);
+                    }
+                }
+            }
+            
+
+        </script>
+        <button onclick="checkAge()">Задание 1</button><br>
+        <button onclick="checkAge2()">Задание 1(2)</button><br>
+        <button onclick="min()">Задание 2</button><br>
+        <button onclick="pow()">Задание 3</button><br>
+        <button onclick="task4()">Задание 4</button><br>
+        <button onclick="task5()">Задание 5</button><br>
+        <button onclick="task6()">Задание 6</button>
+    
+    </body>
+</html>

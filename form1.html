@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="background-image: url(imag/фон2.jpg); display: flex; justify-content: center; align-items: center;flex-direction: column;">
+    <div style="color: rgb(255, 255, 255); text-align: center;">
+        <h1><i>Сделайте заказ</i></h1> <br>
+    </div>
+    <div style="background-color: white; padding: 50px; border-radius: 30px; width: 550px;">
+        <form>
+            <label for="username">Введите ФИО:</label><br>
+            <input type="text" id="username" name="username" pattern="[А-Я][а-я]*" required><br>
+
+            <label for="password">Введите пароль:</label><br>
+            <input type="password" id="password" name="password" required><br>
+
+            <input type="radio" name="disk" value="cd">CD<br>
+            <input type="radio" name="disk" value="dvd">DVD<br>
+
+            Какие обучающие курс вы хотите видеть на диске?<br>
+            <input type="checkbox" name="curse" value="Курсы по фотошопу">Курсы по фотошопу<br>
+            <input type="checkbox" name="curse" value="Курсы по Adobe Dreamweaver">Курсы по Adobe Dreamweaver<br>
+            <input type="checkbox" name="curse" value="Курсы по PHP">Курсы по PHP<br>
+
+            Выберите способ доставки:<br>
+            <select id="drive" name="drive" required>
+                <option value="C">Срочная</option>
+                <option value="D">Не срочная</option>
+                <option value="E">Курьером</option>
+            </select><br><br>
+            Выберите адресс для доставки:<br>
+            <textarea name="address" cols="64" rows="6"></textarea><br>
+
+            <button>Сделать заказ</button>
+            <button>Отмена</button>
+        </form>
+    </div>
+</body>
+</html>

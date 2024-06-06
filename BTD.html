@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>  
+        <script>
+            function task1_1(){
+                let a = parseInt(prompt("Введите число a:"))
+                let b = parseInt(prompt("Введите число b:"))
+                if(a>b){
+                    alert ("a больше b")
+                }
+                else if(a<b){
+                    alert("a меньше b")
+                }
+                else{
+                    alert("a равно b")
+                }
+            }
+            function task1_2(){
+                alert("Короткевич Полина 22-ИТ-1 19.04.2024")
+            }
+            function task2_1(){
+                alert("Выполняется итерации от -100 до 100 включительно. На каждой итерации переменная sum увеличивается на значение переменной i. sum=0")
+            }
+            function task2_2for(){
+                var sum=0;
+                for(var i=50; i<=100; i++){
+                    sum +=i;
+                }
+                alert(sum)
+            }
+            function task2_2while(){
+                var i=50;
+                var  sum=0;
+                while(i<=100){
+                   sum+=i;
+                   i++;
+                }
+                alert(sum);
+            }
+            function task2_3while(){
+               let i=10;
+               while(0<=i){
+                alert(i--);
+                
+               }
+            }
+            function task2_3for(){
+               for (let i=10; i>=0; i--){
+                alert(i);
+               }
+            }
+            function task2_4(){
+                alert("В Антигуа 8:24 часов времени");
+            }
+        </script>
+        <button onclick="task1_1()">Дом.задание 1(1)</button><br>
+        <button onclick="task1_2()">Сведения об авторе</button><br>
+        <button onclick="task2_1()">Дом.задание 2(1)</button><br>
+        <button onclick="task2_2for()">Дом.задание 2(2) for</button><br>
+        <button onclick="task2_2while()">Дом.задание 2(2) while</button><br>
+        <button onclick="task2_3while()">Дом.задание 2(3) while</button><br>
+        <button onclick="task2_3for()">Дом.задание 2(3) for</button><br>
+        <button onclick="task2_4()">Дом задание 2(4)</button>
+
+    </body>
+</html>

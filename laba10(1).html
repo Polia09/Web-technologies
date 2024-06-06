@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Iteration</title>
+</head>
+<body>
+    <script>
+        function iterateArray(arr) {
+            const variant = 10;
+            arr.forEach((element, index) => {
+                if (element === variant) {
+                    console.error(`Элемент ${element}`);
+                } else {
+                    console.log(`Элемент ${element}`);
+                }
+            });
+        }
+
+        const myArray = [5, 10, 7, 3, 10, 8];
+        iterateArray(myArray);
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="background-image: url(imag/фон2.jpg); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div style="color: rgb(255, 255, 255); text-align: center;">
+        <h1><i>Форма для знакомств</i></h1> <br>
+    </div>
+    <div style="background-color: white; padding: 50px; border-radius: 30px; width: 550px;">
+        <form>
+            <table style="border-collapse: collapse; width: 100%;">
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px; width: 50%;">Ваше имя:</td>
+                    <td style="border: 1px solid #000; padding: 10px; width: 50%;"><input type="text" id="username" name="username" pattern="[А-Я][а-я]*" required><br></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Ник:</td>
+                    <td style="border: 1px solid #000; padding: 10px;"><input type="text" id="nickname" name="nickname" required></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Пароль:</td>
+                    <td style="border: 1px solid #000; padding: 10px;"><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Повтор пароля:</td>
+                    <td style="border: 1px solid #000; padding: 10px;"><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Ваш возраст:</td>
+                    <td style="border: 1px solid #000; padding: 10px;"><input type="foto" name="age" required></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Фотография:</td>
+                    <td style="border: 1px solid #000; padding: 10px;"><input type="text" id="city" name="city" required><button><a href="D:\">Обзор...</a></a></button></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border: 1px solid #000; padding: 10px;">
+                        Ваши интересы: <input type="text" id="interests" name="interests" required style="border: none;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">
+                        <input type="checkbox" name="curse" value="Книги">Книги<br>
+                        <input type="checkbox" name="curse" value="Музыка">Музыка<br>
+                        <input type="checkbox" name="curse" value="Кино">Кино<br>
+                    </td>
+                    <td style="border: 1px solid #000; padding: 10px;">
+                        <input type="checkbox" name="curse" value="Кухня">Кухня<br>
+                        <input type="checkbox" name="curse" value="Мода">Мода<br>
+                        <input type="checkbox" name="curse" value="Танцы">Танцы<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #000; padding: 10px;">Ваш пол:</td>
+                    <td style="border: 1px solid #000; padding: 10px;">
+                        <input type="radio" name="disk" value="cd">муж
+                        <input type="radio" name="disk" value="dvd">жен<br>
+                    </td>
+                </tr>
+                </table>
+                <textarea name="interests" cols="64" rows="6">Несколько слов о себе.</textarea><br>
+                <button>Передать данные</button>
+            <button>Сброс данных</button>
+        </form>
+    </div>
+</body>
+</html>

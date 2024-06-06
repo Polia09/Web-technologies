@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка ввода</title>
+</head>
+<body>
+    <script>
+        function checkInput() {
+            while (true) {
+                const userInput = prompt("Введите строку:");
+
+                if (userInput === "Дата") {
+                    const currentDate = new Date();
+                    console.log(`Текущая дата: ${currentDate}`);
+                    break;
+                } else {
+                    console.log(`Вы ввели: ${userInput}`);
+                }
+            }
+        }
+
+        checkInput();
+    </script>
+</body>
+</html>

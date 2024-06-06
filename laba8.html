@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторная работа 8</title>
+    <style>
+        .thumbnails {
+            display: flex;
+            text-align: center;
+            justify-content: center
+        }
+        .thumbnails img {
+            width: 100px;
+            margin-right: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .main-image img {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <h1>Задание 1</h1>
+    <div style="border: 1px solid #000; padding: 10px; width: 700px; margin: 0 auto;">
+    <div class="gallery">
+        <div class="main-image">
+            <img src="imag/Bird1.jpg" style="width: 900px; height: 300px;" alt="Main Image">
+        </div>
+        <div class="thumbnails">
+            <img src="imag/BIR1.gif" alt="Bird">
+            <img src="imag/Bird.jpg" alt="Bird">
+            <img src="imag/BIR2.gif" alt="Bird">
+            <img src="imag/Bird3.jpg" alt="Bird">
+        </div>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const thumbnailsContainer = document.querySelector(".thumbnails");
+        const mainImage = document.querySelector(".main-image img");
+
+        thumbnailsContainer.addEventListener("click", function(event) {
+            if (event.target.tagName === "IMG") {
+                const imageUrl = event.target.src;
+                mainImage.src = imageUrl;
+            }
+        });
+    });
+    </script>
+    </div>
+    <h1>Задание 2</h1>
+    <div style="border: 1px solid #000; padding: 10px; width: 700px; margin: 0 auto;">
+    <ul id="selectableList">
+        <li>Выбрать 1</li>
+        <li>Выбрать 2</li>
+        <li>Выбрать 3</li>
+        <li>Выбрать 4</li>
+        <li>Выбрать 5</li>
+    </ul>
+    
+    <button onclick="resetSelection()">Сбросить выделение</button>
+    
+    <script>
+        
+        const list = document.getElementById("selectableList");
+
+        function resetSelection() {
+            const selectedItems = list.querySelectorAll(".selected");
+            selectedItems.forEach(item => {
+                item.classList.remove("selected");
+                item.style.backgroundColor = ""; 
+            });
+        }
+        list.addEventListener("click", function(event) {
+            const target = event.target;
+    
+            
+            if (target.tagName === "LI") {
+                const isShiftPressed = event.shiftKey;
+                const isCmdPressed = event.metaKey;
+                const isSelectionToggled = isShiftPressed || isCmdPressed;
+
+                if (!isSelectionToggled) {
+                    resetSelection();
+                }
+    
+                target.classList.toggle("selected");
+     
+                if (target.classList.contains("selected")) {
+                    target.style.backgroundColor = "green";
+                } else {
+                    target.style.backgroundColor = ""; 
+                }
+            }
+        });
+    
+        list.addEventListener("mousedown", function(event) {
+            event.preventDefault();
+        });
+    </script>
+    </div>
+
+
+
+    <h1>Задание 3</h1>
+    Нажмите одновременно на английские буквы "А", "В" и "С"
+    <script>
+        let isTaskRunning = true;
+
+        function runOnKeys(func, stopKey, ...codes) {
+            let pressedKeys = new Set();
+
+            function checkKeys() {
+                for (const code of codes) {
+                    if (!pressedKeys.has(code)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            const keyDownHandler = function(event) {
+                pressedKeys.add(event.code);
+
+                if (checkKeys()) {
+                    func(); 
+                }
+
+                if (event.code === stopKey) {
+                    stopTask();
+                }
+            };
+
+            const keyUpHandler = function(event) {
+                pressedKeys.delete(event.code);
+            };
+
+            document.addEventListener("keydown", keyDownHandler);
+            document.addEventListener("keyup", keyUpHandler);
+
+            function stopTask() {
+                document.removeEventListener("keydown", keyDownHandler);
+                document.removeEventListener("keyup", keyUpHandler);
+                isTaskRunning = false;
+                alert("Задание 3 остановлено");
+            }
+        }
+
+        runOnKeys(
+            () => alert("Функция выполнена при нажатии клавиш"),
+            "KeyS", 
+            "KeyA",
+            "KeyB",
+            "KeyC"
+        );
+    </script>
+    
+    <h1>Задание 4</h1>
+    <div style="border: 1px solid #000; padding: 10px; width: 700px; margin: 0 auto;">
+        <div>
+            <table style="margin: 0 auto;"> 
+                <tr>
+                    <td><label for="deposit">Сумма вклада:</label></td>
+                    <td><input type="number" id="deposit" min="0" step="0.01" value="0" oninput="calculateDeposit()"></td>
+                </tr>
+                <tr>
+                    <td><label for="interestRate">Процент:</label></td>
+                    <td><input type="number" id="interestRate" min="0" max="100" step="0.01" value="0" oninput="calculateDeposit()"></td>
+                </tr>
+                <tr>
+                    <td><label for="years">Количество лет:</label></td>
+                    <td><input type="number" id="years" min="0" step="1" value="0" oninput="calculateDeposit()"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div id="depositResult"></div></td>
+                </tr>
+            </table>
+        </div>
+        
+        <script>
+            function calculateDeposit() {
+        const depositAmount = parseFloat(document.getElementById('deposit').value);
+        const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+        const years = parseInt(document.getElementById('years').value);
+    
+        const resultElement = document.getElementById('depositResult');
+    
+        if (isNaN(depositAmount) || isNaN(interestRate) || isNaN(years)) {
+            resultElement.textContent = 'Пожалуйста, введите корректные значения.';
+            return;
+        }
+    
+        const finalAmount = Math.round(depositAmount * Math.pow((1 + interestRate), years)).toFixed(2);
+    
+        resultElement.textContent = `Через ${years} ${getYearsString(years)} сумма вклада будет: ${finalAmount} рублей`;
+    
+        adjustColumnHeights(depositAmount, finalAmount);
+        document.getElementById('initialAmount').textContent = `${depositAmount.toFixed(2)} рублей`;
+    document.getElementById('finalAmount').textContent = `${finalAmount} рублей`;
+    }
+    
+    function getYearsString(years) {
+        if (years === 1 || (years > 20 && years % 10 === 1)) {
+            return "год";
+        } else if ((years >= 2 && years <= 4) || (years > 20 && years % 10 >= 2 && years % 10 <= 4)) {
+            return "года";
+        } else {
+            return "лет";
+        }
+    }
+    
+    function adjustColumnHeights(initialAmount, finalAmount) {
+        const initialColumn = document.getElementById('initialAmountColumn');
+        const finalColumn = document.getElementById('finalAmountColumn');
+    
+        initialColumn.style.height = initialAmount + 'px';
+        finalColumn.style.height = finalAmount + 'px';
+    }
+        </script>
+        
+        
+        </script>
+        
+        <style>
+            .column {
+                display: inline-block;
+                width: 150px; 
+                margin-right: 50px;
+                text-align: center;
+                padding: 10px;
+                border-radius: 5px;
+                vertical-align: bottom;
+            }
+            
+            .amount {
+                font-size: 20px;
+                margin-bottom: 10px;
+                margin-top: auto;
+                transition: height 0.5s;
+
+            }
+        </style>
+        
+        <div>
+            <div class="column" id="initialAmountColumn" style="background-color: red">
+                <div>Было:</div>
+                <div id="initialAmount" class="amount">0</div>
+            </div>
+            <div class="column" id="finalAmountColumn" style="background-color: green">
+                <div>Стало:</div>
+                <div id="finalAmount" class="amount">0</div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>

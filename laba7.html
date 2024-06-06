@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            function Calculator() {
+                    let calculator = {
+                        read() {
+                        while (isNaN(this.a)) {
+                            let inputA = parseInt(prompt("Введите первое значение:", ""));
+                            if (!isNaN(inputA)) {
+                                this.a = inputA;
+                            } else {
+                                alert("Введите числовое значение.");
+                            }
+                        }
+                        while (isNaN(this.b)) {
+                            let inputB = parseInt(prompt("Введите второе значение:", ""));
+                            if (!isNaN(inputB)) {
+                                this.b = inputB;
+                            } else {
+                                alert("Введите числовое значение.");
+                            }
+                        }
+                        },
+                        sum() {
+                            return this.a + this.b;
+                        },
+                        mul() {
+                            return this.a * this.b;
+                        }
+                    };
+
+                    calculator.read(); 
+                    alert("Сумма: " + calculator.sum());
+                    alert("Произведение: " + calculator.mul());
+            }
+            function Accumulatoring(){
+                function Accumulator(startingValue) {
+                    while (isNaN(startingValue)) {
+                        startingValue = parseFloat(prompt("Введите начальное значение (должно быть числом):", ""));
+                    }
+                    this.value = startingValue;
+
+                    this.read = function() {
+                        let input = parseFloat(prompt("Введите число (для завершения введите пустую строку):", ""));
+                        while (!isNaN(input) && input !== null && input !== "") {
+                            this.value += input;
+                            input = parseFloat(prompt("Введите число (для завершения введите пустую строку):", ""));
+                        }
+                    };
+                }
+
+                let startingValue = parseFloat(prompt("Введите начальное значение:", ""));
+                let accumulator = new Accumulator(startingValue); 
+                accumulator.read(); 
+                alert("Текущее значение: " + accumulator.value);
+            }
+            function getRandomNumber() {
+               let min;
+               let max;
+               while(isNaN(min)){
+                min = parseFloat(prompt("Введите минимальное значение:"));
+               }
+               while(isNaN(max)){
+               max = parseFloat(prompt("Введите максимальное значение:"));
+               }
+
+                function random(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+
+                let randomNumber = random(min, max);
+                alert("Случайное число: " + randomNumber);
+            }
+            function getCost() {
+                function extractCurrencyValue(str) {
+                    return parseFloat(str.slice(1));
+                    }
+                    let userInput;
+                    let isValidInput = false;
+                    while (!isValidInput) {
+                        userInput = prompt("Введите стоимость в формате $XXX:");
+
+                        if (userInput && userInput.trim().startsWith("$")) {
+                            isValidInput = true; 
+                        } else {
+                            alert("Введите корректное значение в формате $XXX.");
+                        }
+                    }
+                    let numericValue = extractCurrencyValue(userInput);
+                    alert("Конечный результат: " + numericValue);
+            }
+            
+            function task5(){
+                function sumInput(){
+                let numbers=[];
+                while(true){
+                    let input = prompt("Введите число:", "");
+                    if (input === null || input === "" || isNaN(input)) {
+                        break;
+                    }
+                    if (!isNaN(input)) {
+                        numbers.push(+input);
+                    } else {
+                        alert("Введите число, а не букву или другой символ.");
+                    }
+                    
+                }
+                let sum =0;
+                for(let number of numbers){
+                    sum+=number;
+                }
+                return sum;
+                }
+                let result = sumInput();
+                alert("Сумма введенных чисел:" + result);
+            }
+            function task6(){
+            function sumSalaries() {
+                let salaries = {};
+                let name = prompt("Введите имя сотрудника:", "");
+                while (name) {
+                    let salary = parseFloat(prompt("Введите зарплату для " + name + ":", ""));
+                    if (!isNaN(salary)) {
+                    salaries[name] = salary;
+                    } else {
+                    alert("Введите числовое значение для зарплаты.");
+                    }
+                    name = prompt("Введите имя следующего сотрудника (или нажмите Отмена для завершения):", "");
+                }
+                let sum = 0;
+                for (let salary of Object.values(salaries)) {
+                    sum += salary;
+                }
+                return sum;
+            }
+            alert("Сумма зарплат: " + sumSalaries());
+            }
+            function task7(){
+            function topSalary() {
+                let salaries = {};
+                let name = prompt("Введите имя сотрудника:", "");
+                while (name !== "") {
+                    let salary = parseFloat(prompt("Введите зарплату для " + name + ":", ""));
+                    if (!isNaN(salary)) {
+                    salaries[name] = salary;
+                    } else {
+                        alert("Введите числовое значение для зарплаты.");
+                    }
+                     name = prompt("Введите имя следующего сотрудника (или нажмите Отмена для завершения):", "");
+                    }
+
+                    let maxSalary = 0;
+                    let topPaidEmployee = [];
+
+                    for (let [name, salary] of Object.entries(salaries)) {
+                    if (salary > maxSalary) {
+                        maxSalary = salary;
+                        topPaidEmployee = [name];
+                    }else if(salary === maxSalary){
+                        topPaidEmployee.push(name);
+                    }
+                }
+                return topPaidEmployee;
+            }  
+                let topPaidEmployee = topSalary();
+                if (topPaidEmployee.length>0) {
+                    alert("Самая высокая зарплата у сотрудника: " + topPaidEmployee);
+                } else {
+                    alert("Нет данных о зарплатах сотрудников.");
+                }
+            }
+            function task8(){
+                    function sum(a){
+                        let b;
+                        while (isNaN(b)) {
+                            b = parseFloat(prompt("Введите число b:"));
+                            if (isNaN(b)) {
+                                alert("Введите числовое значение для числа b.");
+                            }
+                        }
+                        return a+b;
+                    }
+                    let a;
+                    while (isNaN(a)) {
+                        a = parseFloat(prompt("Введите число a:"));
+                        if (isNaN(a)) {
+                        alert("Введите числовое значение для числа a.");
+                    }
+                }
+                
+            }
+            
+           
+        </script>
+        <button onclick="Calculator()">Задание 1</button><br>
+        <button onclick="Accumulatoring()">Задание 2</button><br>
+        <button onclick="getRandomNumber()"> Задание 3</button><br>
+        <button onclick="getCost()">Задание 4</button><br>
+        <button onclick="task5()">Задание 5</button><br>
+        <button onclick="task6()">Задание 6</button><br>
+        <button onclick="task7()">Задание 7</button><br>
+        <button onclick="task8()">Задание 8</button>
+
+    </body>
+</html>

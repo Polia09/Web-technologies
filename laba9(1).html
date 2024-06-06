@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 600px; 
+            height: 600px; 
+            border: 10px solid rgb(52, 201, 247);
+            background-color: rgb(76, 76, 224);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner-container {
+            display: flex;
+            flex-direction: column;
+            color :rgb(45, 167, 184);
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            height: 80%;
+        }
+
+        .blue-rectangle {
+            position: relative; 
+            width: 540px; 
+            height: 220px; 
+            background-color: rgb(42, 11, 218);
+        }
+
+        .blue-rectangle::before,
+        .blue-rectangle::after {
+            content: ""; 
+            position: absolute; 
+            width: 470px; 
+            background-color: rgb(47, 214, 14); 
+        }
+
+        .fourth-child{
+            position: absolute;
+            left: 52px; 
+            top: 48px; 
+            width: 140px;
+            height: 24px; 
+            background-color: rgb(214, 214, 114);
+        }
+
+        .fifth-child{
+            position: absolute;
+            background-color: rgb(214, 214, 114);
+            width: 140px;
+            left: 52px; 
+            height: 60px; 
+            top: 110px;
+            z-index: 1;
+        }
+
+        .blue-rectangle::before {
+            top: 40px; 
+            left: 40px; 
+            height: 52px; 
+            
+        }
+        .blue-rectangle::after {
+            bottom: 40px; 
+            left: 40px; 
+            height: 80px; 
+        }
+
+        .wide-blue-rectangle {
+            position: relative; 
+            width: 540px; 
+            height: 220px; 
+            background-color: rgb(42, 11, 218);
+        }
+        
+        .wide-blue-rectangle::before {
+            content: ""; 
+            width: 110px; 
+            position: absolute;
+            height: 180px; 
+            top: 20px; 
+            left: 30px; 
+            background-color: rgb(47, 214, 14);
+        }
+        .wide-blue-rectangle::after {
+            content: ""; 
+            position: absolute;
+            width: 80px; 
+            height: 160px; 
+            top: 40px; 
+            right: 30px; 
+            background-color: rgb(214, 214, 114);
+        }
+        .third-child{
+            position: absolute;
+            margin-top: 140px; 
+            width: 140px; 
+            height: 60px; 
+            right: 130px; 
+            background-color: rgb(233, 116, 7);
+
+        }
+        .sixth-child{
+            position: absolute;
+            background-color: rgb(233, 116, 7);
+            width: 90px; 
+            height: 40px; 
+            left: 40px;
+            top: 30px;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-container">
+            <div class="blue-rectangle">
+                <div class="blue-rectangle::before">
+                    <div class="fourth-child"></div>
+                </div>
+                <div class="blue-rectangle::after">
+                    <div class="fifth-child"></div>
+                </div>
+            </div>
+            <div class="wide-blue-rectangle">
+                <div class="third-child"></div>
+                <div class="wide-blue-rectangle::before">
+                    <div class="sixth-child"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
